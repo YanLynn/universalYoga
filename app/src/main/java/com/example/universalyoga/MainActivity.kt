@@ -7,9 +7,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.universalyoga.Adapter.CourseAdapter
 import com.example.universalyoga.DBHelper.CourseDBHelper
+import com.example.universalyoga.Models.Course
 import com.example.universalyoga.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -27,9 +28,11 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Yoga"
-
+        //courseDBHelper.deleteAll()
         courseAdapter = CourseAdapter(courseDBHelper.getAllCourse(),courseDBHelper)
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+
+        binding.recyclerView.layoutManager = GridLayoutManager(this,2)
         binding.recyclerView.adapter = courseAdapter
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -61,6 +64,8 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
+
 
 
 }

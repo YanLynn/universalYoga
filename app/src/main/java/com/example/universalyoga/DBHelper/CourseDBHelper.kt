@@ -4,9 +4,14 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import com.example.universalyoga.Models.Course
+import com.example.universalyoga.R
+import java.io.ByteArrayOutputStream
 
 class CourseDBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSION){
+
     companion object{
         private const val DATABASE_NAME = "yoga.db"
         private const val DATABASE_VERSION = 1
@@ -58,6 +63,7 @@ class CourseDBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
 
     //get all course from db
     fun getAllCourse(): List<Course>{
+
         val course = mutableListOf<Course>()
         val db = this.readableDatabase
         val cursor = db.query(TABLE_NAME,null,null,null,null,null,"$COLUMN_ID DESC")
@@ -105,6 +111,14 @@ class CourseDBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         val db = this.writableDatabase
         //where query and delete task
         return db.delete(TABLE_NAME,"$COLUMN_ID = ?", arrayOf(courseID.toString()))
+    }
+
+    fun deleteAll(){
+        val db = this.writableDatabase
+        db?.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
+        onCreate(db)
+
+
     }
 
 
