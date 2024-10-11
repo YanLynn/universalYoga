@@ -1,4 +1,4 @@
-package com.example.universalyoga.Activity.Course
+package com.example.universalyoga.Activity
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

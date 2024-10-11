@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="cardText">#FA8282</color>
     <color name="cardText1">#9D9D9D</color>
+    <color name="priceColor">#E6BF4A</color>
 </resources>

@@ -70,9 +70,9 @@ class CourseDBHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         if(cursor.moveToFirst()){
             do {
                 val courses = Course(
+                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TYPE_OF_CLASS)),
                     cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID)),
                     cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_DAY_OF_WEEK)),
-                    cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TYPE_OF_CLASS)),
                     cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TIME)),
                     cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_CAPACITY)),
                     cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_DURATION)),

@@ -5,14 +5,6 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Course.DetailCourseActivity">
+    tools:context=".Activity.DetailCourseActivity">
 
-    <TextView
-        android:id="@+id/detailCourseID"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/cardText1"
-        android:text="Detail Course "
-        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

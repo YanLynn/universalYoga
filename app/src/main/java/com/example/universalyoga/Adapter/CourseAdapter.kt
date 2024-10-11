@@ -7,7 +7,7 @@ import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.universalyoga.Activity.Course.DetailCourseActivity
+import com.example.universalyoga.Activity.DetailCourseActivity
 import com.example.universalyoga.DBHelper.CourseDBHelper
 import com.example.universalyoga.Models.Course
 import com.example.universalyoga.byteArrayToBitmap
@@ -32,11 +32,10 @@ class CourseAdapter(private val course: List<Course>,private val dbHelper: Cours
  inner class CourseViewHolder(private val binding: CardViewBinding) : RecyclerView.ViewHolder(binding.root){
      fun bind(course: Course) {
          val bitmap = byteArrayToBitmap(course.images)
-         binding.img.setImageBitmap(bitmap)
-         binding.dayOfWeek.text = course.day_of_week
-         binding.timeText.text = course.time_of_course
-         binding.typeOfClass.text = course.type_of_class
-         binding.details.text = "Capacity: ${course.capacity} | Duration: ${course.duration} mins| $: ${course.price_per_class}"
+         binding.courseImage.setImageBitmap(bitmap)
+         "${course.type_of_class} | ${course.day_of_week} | ${course.time_of_course}".also { binding.classDayTime.text = it }
+         "Duration - ${course.duration} | Capacity - ${course.capacity}".also { binding.DurationCapacity.text = it }
+         "Price - $${course.price_per_class.toString()}".also { binding.price.text = it }
          binding.description.text = course.description
          binding.location.text = course.location
 
