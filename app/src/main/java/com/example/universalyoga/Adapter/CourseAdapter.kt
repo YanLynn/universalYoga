@@ -1,9 +1,8 @@
 package com.example.universalyoga.Adapter
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +13,7 @@ import com.example.universalyoga.byteArrayToBitmap
 import com.example.universalyoga.databinding.CardViewBinding
 
 class CourseAdapter(private val course: List<Course>,private val dbHelper: CourseDBHelper) :RecyclerView.Adapter<CourseAdapter.CourseViewHolder>(){
+    private var filterCourseList: List<Course> = course
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -27,9 +27,16 @@ class CourseAdapter(private val course: List<Course>,private val dbHelper: Cours
         holder.bind(course)
     }
 
-    override fun getItemCount(): Int = course.size
 
- inner class CourseViewHolder(private val binding: CardViewBinding) : RecyclerView.ViewHolder(binding.root){
+
+    override fun getItemCount(): Int {
+        return filterCourseList.size
+    }
+
+
+    //to display on cardView
+    inner class CourseViewHolder(private val binding: CardViewBinding) : RecyclerView.ViewHolder(binding.root){
+     @SuppressLint("SuspiciousIndentation")
      fun bind(course: Course) {
          val bitmap = byteArrayToBitmap(course.images)
          binding.courseImage.setImageBitmap(bitmap)
@@ -39,6 +46,7 @@ class CourseAdapter(private val course: List<Course>,private val dbHelper: Cours
          binding.description.text = course.description
          binding.location.text = course.location
 
+         //cardView onClick action
          binding.cardView.setOnClickListener{
             val intent = Intent(binding.root.context, DetailCourseActivity::class.java)
                 intent.putExtra("COURSE_ID",course.course_id)
@@ -47,5 +55,21 @@ class CourseAdapter(private val course: List<Course>,private val dbHelper: Cours
          }
      }
  }
+
+    //filter search in appbar
+    @SuppressLint("NotifyDataSetChanged")
+    fun filter(query: String) {
+        filterCourseList = if(query.isEmpty()){
+            course
+        }else{
+            course.filter {
+                it.location.contains(query,ignoreCase = true) ||
+                it.description.contains(query, ignoreCase = true) ||
+                it.type_of_class.contains(query, ignoreCase = true) ||
+                it.day_of_week.contains(query, ignoreCase = true)
+            }
+        }
+        notifyDataSetChanged()
+    }
 
 }

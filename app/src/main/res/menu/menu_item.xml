@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/uploadDB"
-        android:title="Upload Database"
 
-        />
-    <item
-        android:id="@+id/syncDB"
-        android:title="Download Database"
-        />
     <item
         android:id="@+id/action_search"
         android:title="Search"
-        app:showAsAction="collapseActionView|ifRoom"
         android:icon="@drawable/ic_search"
+        app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="androidx.appcompat.widget.SearchView"/>
 
 </menu>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_course"
+            android:icon="@drawable/baseline_chevron_right_24"
+            android:title="Course"/>
+        <item
+            android:id="@+id/nav_class"
+            android:icon="@drawable/baseline_chevron_right_24"
+            android:title="Class"/>
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/baseline_chevron_right_24"
+            android:title="Setting"/>
+        <item
+            android:id="@+id/uploadDB"
+            android:icon="@drawable/baseline_chevron_right_24"
+            android:title="Upload Database"
+
+            />
+        <item
+            android:id="@+id/syncDB"
+            android:icon="@drawable/baseline_chevron_right_24"
+            android:title="Download Database"
+            />
+
+    </group>
+</menu>
