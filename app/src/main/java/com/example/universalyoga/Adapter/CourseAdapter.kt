@@ -6,7 +6,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.universalyoga.Activity.DetailCourseActivity
+import com.example.universalyoga.Activity.Course.DetailCourseActivity
 import com.example.universalyoga.DBHelper.CourseDBHelper
 import com.example.universalyoga.Models.Course
 import com.example.universalyoga.byteArrayToBitmap
